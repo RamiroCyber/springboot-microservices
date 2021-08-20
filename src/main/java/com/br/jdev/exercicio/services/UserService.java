@@ -1,6 +1,5 @@
 package com.br.jdev.exercicio.services;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,22 +22,41 @@ public class UserService {
 		return listUsers.stream().map(UserDTO::convert).collect(Collectors.toList());
 	}
 
-	public User insert(User user) {
-		user.setDateRegister(new Date());
-		return userRepository.save(user);
+	public UserDTO insert(UserDTO userDTO) {
+		User user = userRepository.save(User.convert(userDTO));
+		return UserDTO.convert(user);
 	}
 
 	public void delete(Long id) {
-		userRepository.deleteById(id);
+		if (id != null) {
+			userRepository.deleteById(id);
+		}
 	}
 
-	public User find(Long id) {
+	public UserDTO findById(Long id) {
 		Optional<User> user = userRepository.findById(id);
-		return user.get();
+		if (user.isPresent()) {
+			return UserDTO.convert(user.get());
+		}
+		return null;
 	}
 
-	public User update(User user) {
-		return userRepository.saveAndFlush(user);
+	public UserDTO findByCpf(String cpf) {
+		User user = userRepository.findByCpf(cpf);
+		if (user != null) {
+			return UserDTO.convert(user);
+		}
+		return null;
+	}
+
+	public UserDTO update(UserDTO userDTO) {
+		User user = userRepository.saveAndFlush(User.convert(userDTO));
+		return UserDTO.convert(user);
+	}
+
+	public List<UserDTO> findByName(String name) {
+		List<User> listUsers = userRepository.queryByNameLike(name);
+		return listUsers.stream().map(UserDTO::convert).collect(Collectors.toList());
 	}
 
 }

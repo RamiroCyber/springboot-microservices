@@ -35,8 +35,8 @@ public class UserController {
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<User> find(@PathVariable Long id) {
-		User user = userService.find(id);
-		return ResponseEntity.ok().body(user);
+		
+		return ResponseEntity.ok().body();
 	}
 
 	@PostMapping
