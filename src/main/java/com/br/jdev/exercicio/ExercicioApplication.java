@@ -23,12 +23,12 @@ public class ExercicioApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		User user1 = new User("ramiro", "01581817171", "avenida jose", "ramiro.dr@gmail.com", new Date());
+	/*	User user1 = new User("ramiro", "01581817171", "avenida jose", "ramiro.dr@gmail.com", new Date());
 
 		user1.getPhones().addAll(Arrays.asList("3215484", "85484845"));
 
 		userRepository.save(user1);
-
+*/
 	}
 
 }
