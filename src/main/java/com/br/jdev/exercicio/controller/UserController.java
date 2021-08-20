@@ -1,6 +1,5 @@
 package com.br.jdev.exercicio.controller;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping
+	@GetMapping(value = "/search")
 	public ResponseEntity<List<UserDTO>> findByName(@RequestParam(name = "name", required = true) String name) {
 		List<UserDTO> listUserDTO = userService.findByName(name);
 		return ResponseEntity.ok().body(listUserDTO);
