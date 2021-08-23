@@ -15,17 +15,6 @@ public class UserDTO {
 	private Set<String> phones = new HashSet<>();
 	private Date dateRegister;
 
-	public UserDTO() {
-	}
-
-	public UserDTO(String name, String cpf, String adress, String email, Date dateRegister) {
-		this.name = name;
-		this.cpf = cpf;
-		this.adress = adress;
-		this.email = email;
-		this.dateRegister = dateRegister;
-	}
-
 	public String getName() {
 		return name;
 	}
